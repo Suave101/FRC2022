@@ -9,10 +9,10 @@ class MyRobot(wpilib.TimedRobot):
         This function is called upon program startup and
         should be used for any initialization code.
         """
-        self.flm = wpilib.Spark(0)
-        self.frm = wpilib.Spark(1)
-        self.blm = wpilib.Talon(8)
-        self.brm = wpilib.Talon(9)
+        self.flm = ctre.VictorSPX(2)
+        self.frm = ctre.VictorSPX(3)
+        self.blm = ctre.VictorSPX(1)
+        self.brm = ctre.VictorSPX(4)
         self.left = wpilib.SpeedControllerGroup(self.flm, self.frm)
         self.right = wpilib.SpeedControllerGroup(self.blm, self.brm)
         self.drive = wpilib.drive.DifferentialDrive(self.left, self.right)
