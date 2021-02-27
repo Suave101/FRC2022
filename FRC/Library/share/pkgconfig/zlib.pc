@@ -1,0 +1,13 @@
+prefix=D:/Program_Files/envs/FRC/Library
+exec_prefix=D:/Program_Files/envs/FRC/Library
+libdir=D:/Program_Files/envs/FRC/Library/lib
+sharedlibdir=D:/Program_Files/envs/FRC/Library/lib
+includedir=D:/Program_Files/envs/FRC/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.11
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
