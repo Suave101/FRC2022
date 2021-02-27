@@ -18,8 +18,10 @@ class MyRobot(wpilib.TimedRobot):
         """
         self.flm = ctre.VictorSPX(2)
         self.frm = ctre.VictorSPX(3)
+        self.frm.setInverted(True)
         self.blm = ctre.VictorSPX(1)
         self.brm = ctre.VictorSPX(4)
+        self.brm.setInverted(True)
         self.flm.set(ControlMode.PercentOutput, 0)
         self.frm.set(ControlMode.PercentOutput, 0)
         self.blm.set(ControlMode.PercentOutput, 0)
@@ -54,8 +56,30 @@ class MyRobot(wpilib.TimedRobot):
         yR = self.controller.getY(self.controller.Hand.kRightHand)
         xR = self.controller.getX(self.controller.Hand.kRightHand)
         if 0 < yL <= 1 and fourFive > xL > (-1 * fourFive):
-            pass
-
+            self.flm.set(ControlMode.PercentOutput, yL)
+            self.frm.set(ControlMode.PercentOutput, yL)
+            self.blm.set(ControlMode.PercentOutput, yL)
+            self.brm.set(ControlMode.PercentOutput, yL)
+        elif -1 <= yL < 0 and fourFive > xL > (-1 * fourFive):
+            self.flm.set(ControlMode.PercentOutput, yL)
+            self.frm.set(ControlMode.PercentOutput, yL)
+            self.blm.set(ControlMode.PercentOutput, yL)
+            self.brm.set(ControlMode.PercentOutput, yL)
+        elif fourFive > yR > (-1 * fourFive) and 0 < xR <= 1:
+            self.flm.set(ControlMode.PercentOutput, -1*xR/2)
+            self.frm.set(ControlMode.PercentOutput, xR/2)
+            self.blm.set(ControlMode.PercentOutput, -1*xR/2)
+            self.brm.set(ControlMode.PercentOutput, xR/2)
+        elif fourFive > yR > (-1 * fourFive) and -1 <= xR < 0:
+            self.flm.set(ControlMode.PercentOutput, -1 * xR / 2)
+            self.frm.set(ControlMode.PercentOutput, xR / 2)
+            self.blm.set(ControlMode.PercentOutput, -1 * xR / 2)
+            self.brm.set(ControlMode.PercentOutput, xR / 2)
+        else:
+            self.flm.set(ControlMode.PercentOutput, 0)
+            self.frm.set(ControlMode.PercentOutput, 0)
+            self.blm.set(ControlMode.PercentOutput, 0)
+            self.brm.set(ControlMode.PercentOutput, 0)
 
 
 if __name__ == "__main__":
