@@ -1,8 +1,15 @@
 import wpilib
 import wpilib.drive
 import ctre
+from ctre._ctre import ControlMode
+import math
+
 
 class MyRobot(wpilib.TimedRobot):
+
+    def __init__(self, period=0.02):
+        super().__init__(period)
+        self.timer = wpilib.Timer()
 
     def robotInit(self):
         """
@@ -13,11 +20,10 @@ class MyRobot(wpilib.TimedRobot):
         self.frm = ctre.VictorSPX(3)
         self.blm = ctre.VictorSPX(1)
         self.brm = ctre.VictorSPX(4)
-        self.left = wpilib.SpeedControllerGroup(self.flm, self.frm)
-        self.right = wpilib.SpeedControllerGroup(self.blm, self.brm)
-        self.drive = wpilib.drive.DifferentialDrive(self.left, self.right)
-        self.stick = wpilib.XboxController(0)
-        self.timer = wpilib.Timer()
+        self.flm.set(ControlMode.PercentOutput, 0)
+        self.frm.set(ControlMode.PercentOutput, 0)
+        self.blm.set(ControlMode.PercentOutput, 0)
+        self.brm.set(ControlMode.PercentOutput, 0)
 
     def autonomousInit(self):
         """This function is run once each time the robot enters autonomous mode."""
@@ -27,13 +33,29 @@ class MyRobot(wpilib.TimedRobot):
     def autonomousPeriodic(self):
         """This function is called periodically during autonomous."""
         if self.timer.get() < 2.0:
-            self.drive.arcadeDrive(-0.5, 0)  # Drive forwards at half speed
+            self.flm.set(ControlMode.PercentOutput, 0.5)
+            self.frm.set(ControlMode.PercentOutput, 0.5)
+            self.blm.set(ControlMode.PercentOutput, 0.5)
+            self.brm.set(ControlMode.PercentOutput, 0.5)
         else:
-            self.drive.arcadeDrive(0, 0)  # Stop robot
+            self.flm.set(ControlMode.PercentOutput, 0)
+            self.frm.set(ControlMode.PercentOutput, 0)
+            self.blm.set(ControlMode.PercentOutput, 0)
+            self.brm.set(ControlMode.PercentOutput, 0)
+
+    def teleopInit(self):
+        self.controller = wpilib.XboxController(0)
 
     def teleopPeriodic(self):
         """This function is called periodically during operator control."""
-        self.drive.arcadeDrive(self.stick.getY(self), self.stick.getX(self))
+        fourFive = math.sqrt(2)/2
+        xL = self.controller.getX(self.controller.Hand.kLeftHand)
+        yL = self.controller.getY(self.controller.Hand.kLeftHand)
+        yR = self.controller.getY(self.controller.Hand.kRightHand)
+        xR = self.controller.getX(self.controller.Hand.kRightHand)
+        if 0 < yL <= 1 and fourFive > xL > (-1 * fourFive):
+            pass
+
 
 
 if __name__ == "__main__":
