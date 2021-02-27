@@ -16,6 +16,8 @@ class MyRobot(wpilib.TimedRobot):
         This function is called upon program startup and
         should be used for any initialization code.
         """
+        wpilib.CameraServer.launch()
+        wpilib.CameraServer.launch('vision.py:main')
         self.flm = ctre.VictorSPX(2)
         self.frm = ctre.VictorSPX(3)
         self.frm.setInverted(True)
@@ -56,6 +58,7 @@ class MyRobot(wpilib.TimedRobot):
         yR = self.controller.getY(self.controller.Hand.kRightHand)
         xR = self.controller.getX(self.controller.Hand.kRightHand)
         if 0 < yL <= 1 and fourFive > xL > (-1 * fourFive):
+            # Forward
             self.flm.set(ControlMode.PercentOutput, yL)
             self.frm.set(ControlMode.PercentOutput, yL)
             self.blm.set(ControlMode.PercentOutput, yL)
@@ -66,11 +69,13 @@ class MyRobot(wpilib.TimedRobot):
             self.blm.set(ControlMode.PercentOutput, yL)
             self.brm.set(ControlMode.PercentOutput, yL)
         elif fourFive > yR > (-1 * fourFive) and 0 < xR <= 1:
+            # Left?
             self.flm.set(ControlMode.PercentOutput, -1*xR/2)
             self.frm.set(ControlMode.PercentOutput, xR/2)
             self.blm.set(ControlMode.PercentOutput, -1*xR/2)
             self.brm.set(ControlMode.PercentOutput, xR/2)
         elif fourFive > yR > (-1 * fourFive) and -1 <= xR < 0:
+            # Right?
             self.flm.set(ControlMode.PercentOutput, -1 * xR / 2)
             self.frm.set(ControlMode.PercentOutput, xR / 2)
             self.blm.set(ControlMode.PercentOutput, -1 * xR / 2)
