@@ -12,10 +12,6 @@ class MyRobot(wpilib.TimedRobot):
         self.timer = wpilib.Timer()
 
     def robotInit(self):
-        """
-        This function is called upon program startup and
-        should be used for any initialization code.
-        """
         wpilib.CameraServer.launch()
         wpilib.CameraServer.launch('vision.py:main')
         self.flm = ctre.VictorSPX(2)
@@ -30,12 +26,10 @@ class MyRobot(wpilib.TimedRobot):
         self.brm.set(ControlMode.PercentOutput, 0)
 
     def autonomousInit(self):
-        """This function is run once each time the robot enters autonomous mode."""
         self.timer.reset()
         self.timer.start()
 
     def autonomousPeriodic(self):
-        """This function is called periodically during autonomous."""
         if self.timer.get() < 2.0:
             self.flm.set(ControlMode.PercentOutput, 0.5)
             self.frm.set(ControlMode.PercentOutput, 0.5)
@@ -51,7 +45,6 @@ class MyRobot(wpilib.TimedRobot):
         self.controller = wpilib.XboxController(0)
 
     def teleopPeriodic(self):
-        """This function is called periodically during operator control."""
         fourFive = math.sqrt(2)/2
         xL = self.controller.getX(self.controller.Hand.kLeftHand)
         yL = self.controller.getY(self.controller.Hand.kLeftHand)
@@ -80,11 +73,17 @@ class MyRobot(wpilib.TimedRobot):
             self.frm.set(ControlMode.PercentOutput, xR / 2)
             self.blm.set(ControlMode.PercentOutput, -1 * xR / 2)
             self.brm.set(ControlMode.PercentOutput, xR / 2)
+        # elif fourFive > xL > (-1 * fourFive) and fourFive > yR > (-1 * fourFive) and 0 < xR <= 1 or :
         else:
-            self.flm.set(ControlMode.PercentOutput, 0)
-            self.frm.set(ControlMode.PercentOutput, 0)
-            self.blm.set(ControlMode.PercentOutput, 0)
-            self.brm.set(ControlMode.PercentOutput, 0)
+            self.flm.set(ControlMode.PercentOutput, yL)
+            self.frm.set(ControlMode.PercentOutput, xR)
+            self.blm.set(ControlMode.PercentOutput, yL)
+            self.brm.set(ControlMode.PercentOutput, xR)
+        # else:
+        #     self.flm.set(ControlMode.PercentOutput, 0)
+        #     self.frm.set(ControlMode.PercentOutput, 0)
+        #     self.blm.set(ControlMode.PercentOutput, 0)
+        #     self.brm.set(ControlMode.PercentOutput, 0)
 
 
 if __name__ == "__main__":

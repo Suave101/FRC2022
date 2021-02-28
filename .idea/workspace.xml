@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="435558be-425e-4e32-a75f-d3f94cb0aea0" name="Default Changelist" comment="Vision Edited">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artimis-2021/robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Artimis-2021/robot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
