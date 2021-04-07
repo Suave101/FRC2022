@@ -1,6 +1,6 @@
-## Welcome to GitHub Pages
+## Welcome to Team 5616 RobotPy
 
-You can use the [editor on GitHub](https://github.com/FRC-Team-5616/Robot-Python-Code/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+You can use the code here for your robot. This code uses the wpilib RobotPy library and the ctre RobotPy library.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
