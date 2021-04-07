@@ -4,25 +4,30 @@ You can use the code here for your robot. This code uses the wpilib RobotPy libr
 
 You can report issues and have conversations on this repository about the code. You can also make pull requests.
 
+### The Code
+
+To install the ctre and wpilib RobotPy librarys  on your computer you must run the code below:
+
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+py -3 -m pip install robotpy
+py -3 -m pip install -U robotpy[ctre]
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+To make your Roborio understand the code you must first download the packages to your computer by running these commands:
+
+```markdown
+py -3 -m robotpy_installer download-python
+py -3 -m robotpy_installer download robotpy
+py -3 -m robotpy_installer download -U robotpy[ctre]
+```
+
+Once you download these packages you must CONNECT TO YOUR ROBOTS WIFI then run these commands to send the librarys to the Roborio.
+
+```markdown
+py -3 -m robotpy_installer install-python
+py -3 -m robotpy_installer install robotpy
+py -3 -m robotpy_installer install robotpy[ctre]
+```
 
 ### Jekyll Themes
 
