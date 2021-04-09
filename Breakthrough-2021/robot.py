@@ -1,5 +1,6 @@
 import wpilib
 import ctre
+import wpilib.interfaces
 
 
 class Modes:
@@ -16,6 +17,7 @@ class MyRobot(wpilib.TimedRobot):
         This function is called upon program startup and
         should be used for any initialization code.
         """
+        self.gyro = wpilib.interfaces.Gyro()
         ds = wpilib.DriverStation()
         mode = modes.Talon
         if mode == modes.Talon:
@@ -37,6 +39,12 @@ class MyRobot(wpilib.TimedRobot):
         self.timer = wpilib.Timer()
         self.stick = wpilib.XboxController(1)
         self.timer = wpilib.Timer()
+        self.frLeft.set(ctre.ControlMode.PercentOutput, 0)
+        self.reLeft.set(ctre.ControlMode.PercentOutput, 0)
+        self.frRight.set(ctre.ControlMode.PercentOutput, 0)
+        self.reRight.set(ctre.ControlMode.PercentOutput, 0)
+        self.gyro.calibrate()
+        self.gyro.reset()
         # Set Inverted
         self.frLeft.setInverted(False)
         self.reLeft.setInverted(False)
