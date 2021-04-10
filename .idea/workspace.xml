@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="435558be-425e-4e32-a75f-d3f94cb0aea0" name="Default Changelist" comment="Update Teamnumber">
+    <list default="true" id="435558be-425e-4e32-a75f-d3f94cb0aea0" name="Default Changelist" comment="added Gyro">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Breakthrough-2021/robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Breakthrough-2021/robot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617930700340</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added Gyro">
+      <created>1617931381450</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617931381450</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,13 +202,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Update" />
     <MESSAGE value="Update Teamnumber" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Teamnumber" />
+    <MESSAGE value="added Gyro" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Gyro" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="272" y="97" key="Vcs.Push.Dialog.v2" timestamp="1617930709794">
+    <state x="272" y="97" key="Vcs.Push.Dialog.v2" timestamp="1617931485949">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="272" y="97" key="Vcs.Push.Dialog.v2/-1920.8.1920.1040/0.0.1360.728@0.0.1360.728" timestamp="1617930709794" />
+    <state x="272" y="97" key="Vcs.Push.Dialog.v2/-1920.8.1920.1040/0.0.1360.728@0.0.1360.728" timestamp="1617931485949" />
     <state x="462" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617930682583">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
